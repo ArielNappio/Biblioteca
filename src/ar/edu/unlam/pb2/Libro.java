@@ -37,10 +37,6 @@ public class Libro {
 		this.autor = autor;
 	}
 
-	public void prestamo() {
-
-	}
-
 	@Override
 	public String toString() {
 		return "Libro [id=" + id + ", nombre=" + nombre + ", autor=" + autor + "]";

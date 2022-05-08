@@ -40,8 +40,19 @@ public class Bibloteca {
 		return this.libros.size();
 	}
 
-	public void prestarLibro(Libro libroPrestado) {
+	public void prestarLibro(Libro libroAPrestar) {
+		for (Alumno I : alumnos) {
+			if (libros.contains(libroAPrestar)) {
+				I.alquilarLibro(libroAPrestar);
+				librosPrestados.add(libroAPrestar);
+				this.libros.remove(libroAPrestar);
 
+			}
+		}
+	}
+
+	public HashSet<Libro> listaDeLibrosPrestados() {
+		return this.librosPrestados;
 	}
 
 }

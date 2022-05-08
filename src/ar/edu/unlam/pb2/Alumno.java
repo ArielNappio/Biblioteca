@@ -8,15 +8,15 @@ public class Alumno {
 	private String nombre;
 	private String apelido;
 	private Integer id_alumno;
-
-	private HashSet<Libro> libros;
+	private static Integer idActualAlumno = 1;
+	private HashSet<Libro> librosTomadosPorElAlumno;
 
 	public Alumno(Integer dni, String nombre, String apelido) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apelido = apelido;
-		this.id_alumno = id_alumno++;
-		this.libros = new HashSet<Libro>();
+		this.id_alumno = idActualAlumno++;
+		this.librosTomadosPorElAlumno = new HashSet<Libro>();
 	}
 
 	public Integer getDni() {
@@ -50,10 +50,17 @@ public class Alumno {
 	public void setId_alumno(Integer id_alumno) {
 		this.id_alumno = id_alumno;
 	}
-	public void alquilarLibro(Libro libro) {
-		if(libros.size()<=2) {
-		libros.add(libro);
+
+	public Boolean alquilarLibro(Libro libro) {
+		if (librosTomadosPorElAlumno.size() <= 2) {
+			librosTomadosPorElAlumno.add(libro);
+			return true;
 		}
+		return false;
+	}
+
+	public HashSet<Libro> listaDeLibrosTomados() {
+		return this.librosTomadosPorElAlumno;
 	}
 
 	@Override

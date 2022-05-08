@@ -38,11 +38,10 @@ public class Test {
 
 		Bibloteca nuevaBiblo = new Bibloteca();
 
-		Libro libroDeHistoria = new Historia(1, "San Martin", "edu");
-		Libro libroDeGeografia = new Geografia(2, "Paises", "planetario");
-		Libro libroDeMatematicas = new Matematicas(3, "Geometria", "matematicado");
+		Libro libroDeHistoria = new Historia("San Martin", "edu");
+		Libro libroDeGeografia = new Geografia("Paises", "planetario");
+		Libro libroDeMatematicas = new Matematicas("Geometria", "matematicado");
 
-		nuevaBiblo.agregarLibro(libroDeMatematicas);
 		nuevaBiblo.agregarLibro(libroDeGeografia);
 		nuevaBiblo.agregarLibro(libroDeHistoria);
 
@@ -68,11 +67,25 @@ public class Test {
 	public void queSePuedaPrestarUnLibro() {
 		Bibloteca nuevaBiblo = new Bibloteca();
 		Alumno Kevin = new Alumno(43236669, "Kevin", "Arias");
+
 		Libro libroDeHistoria = new Historia("San Martin", "edu");
+		Libro libroDeGeografia = new Geografia("Paises", "planetario");
+		Libro libroDeMatematicas = new Matematicas("Geometria", "matematicado");
 
 		nuevaBiblo.AgregarAlumno(Kevin);
+
 		nuevaBiblo.agregarLibro(libroDeHistoria);
+		nuevaBiblo.agregarLibro(libroDeGeografia);
+		nuevaBiblo.agregarLibro(libroDeMatematicas);
+
+		nuevaBiblo.prestarLibro(libroDeHistoria);
+		nuevaBiblo.prestarLibro(libroDeGeografia);
+		nuevaBiblo.prestarLibro(libroDeMatematicas);
 
 		Kevin.alquilarLibro(libroDeHistoria);
+		Kevin.alquilarLibro(libroDeGeografia);
+		Kevin.alquilarLibro(libroDeMatematicas);
+
+		System.out.println(nuevaBiblo.listaDeLibrosPrestados());
 	}
 }
